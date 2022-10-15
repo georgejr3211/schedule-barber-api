@@ -33,7 +33,7 @@ clienteRouter.post("/", async (req, res) => {
   return clienteController.create(req, res);
 });
 
-clienteRouter.put("/", async (req, res) => {
+clienteRouter.put("/:id", async (req, res) => {
   const clienteController = await clienteFactory();
   return clienteController.update(req, res);
 });
