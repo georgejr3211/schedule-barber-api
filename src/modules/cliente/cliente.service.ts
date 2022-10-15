@@ -81,11 +81,14 @@ export class ClienteService {
         cliente.pessoa.senha = await EncryptService.encryptPassword(
           cliente.pessoa.senha
         );
+      } else {
+        cliente.pessoa.senha = clienteExists.pessoa.senha
       }
 
       const newCliente = this.repo.create({
-        id: cliente.id,
+        id: clienteExists.id,
         pessoa: {
+          id: clienteExists.pessoa.id,
           nome: cliente.pessoa.nome,
           cpf: cliente.pessoa.cpf,
           email: cliente.pessoa.email,
@@ -101,7 +104,7 @@ export class ClienteService {
 
       if (cliente.pessoa.endereco) {
         newCliente.pessoa.endereco = {
-          id: cliente.pessoa.endereco.id,
+          id: clienteExists.pessoa.endereco.id,
           cep: cliente.pessoa.endereco.cep,
           rua: cliente.pessoa.endereco.rua,
           num: cliente.pessoa.endereco.num,
