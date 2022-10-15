@@ -46,7 +46,7 @@ export interface UpdateClienteDto {
   pessoa: {
     cpf: string;
     nome: string;
-    dataNasc?: Date;
+    dataNasc?: string;
     telefone: string;
     celular?: string;
     email: string;
