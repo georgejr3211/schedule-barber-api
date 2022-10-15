@@ -3,6 +3,7 @@ export interface TipoUsuarioDto {
 }
 
 export interface EnderecoDto {
+  id?: number;
   cep: string;
   rua: string;
   estado: string;
@@ -13,6 +14,35 @@ export interface EnderecoDto {
 }
 
 export interface CreateClienteDto {
+  pessoa: {
+    cpf: string;
+    nome: string;
+    dataNasc?: Date;
+    telefone: string;
+    celular?: string;
+    email: string;
+    senha: string;
+    tipoUsuario: TipoUsuarioDto;
+    endereco: EnderecoDto;
+  };
+}
+
+export interface ListClienteDto {
+  skip?: number;
+  take?: number;
+  search?: string;
+}
+
+export interface FindClienteDto {
+  id: number;
+}
+
+export interface DestroyClienteDto {
+  id: number;
+}
+
+export interface UpdateClienteDto {
+  id: number;
   pessoa: {
     cpf: string;
     nome: string;
